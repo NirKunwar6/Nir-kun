@@ -116,3 +116,108 @@ body {
     text-align: center; font-size: 3rem; margin: 80px 0 40px;
     color: white; text-transform: uppercase;
 }
+/* 1. Fix Name Overflow (Making it responsive) */
+.name-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem); /* Automatically shrinks to fit screen */
+    color: white;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 90%; /* Keeps it within the screen */
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+/* 2. Vertical Fixed Navigation (Top Right) */
+.vertical-nav {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: flex-end;
+    gap: 15px;
+    z-index: 9999; /* Stays above everything */
+}
+
+.vertical-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    transition: 0.4s;
+    border-right: 3px solid transparent;
+}
+
+.vertical-nav a:hover {
+    border-right: 3px solid var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold);
+}
+
+.vertical-nav .logo {
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+/* 3. Contact Form Styling */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto 100px;
+    padding: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    color: white;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.submit-btn {
+    background: var(--gold);
+    color: black;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* Ensure sections don't overlap nav on mobile */
+@media (max-width: 768px) {
+    .vertical-nav {
+        top: 10px;
+        right: 10px;
+    }
+}
+

@@ -1,150 +1,149 @@
-    :root {
+:root {
     --gold: #D4AF37;
-    --black: #050505;
-    --white: #ffffff;
+    --dark: #050505;
+    --light: #f5f5f5;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--dark);
+    color: var(--light);
     font-family: 'Poppins', sans-serif;
 }
 
-/* 1. FIXED SIDEBAR - DOES NOT SCROLL */
-.fixed-sidebar {
-    position: fixed; /* Locked to the screen */
-    top: 25px;
-    right: 25px;
-    z-index: 10000;
+/* NAVIGATION: Fixed to screen, vertical, does not scroll */
+.oscar-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.side-logo {
+.nav-logo {
     color: var(--gold);
     font-family: 'Syncopate', sans-serif;
+    font-size: 1rem;
     font-weight: 900;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-.button-group {
+.nav-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
 }
 
-.button-group a {
+.nav-group a {
     color: white;
     text-decoration: none;
-    font-size: 0.65rem; /* Small buttons as requested */
+    font-size: 0.65rem; /* Small, classy buttons */
     font-weight: 700;
     text-transform: uppercase;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 14px;
+    padding: 8px 12px;
     border-right: 3px solid var(--gold);
     backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
-.button-group a:hover {
+.nav-group a:hover {
     background: var(--gold);
     color: black;
 }
 
-/* 2. WORLD CLASS CENTERING (Spacing 3,4) */
-.container {
-    width: 70%; /* Perfect center spacing */
+/* CENTERING & SPACING (The 3,4 Spacing) */
+.main-container {
+    width: 80%; /* Creates 10% spacing on each side */
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
 
-.page-section {
-    padding: 100px 0;
-    min-height: 50vh;
+.section-center {
+    padding: 80px 0;
+    min-height: 40vh;
 }
 
-/* 3. HEADERS - Distinct Color & Center */
-.section-header {
+.hero-center {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HEADERS: Distinct color, starts another line */
+.gold-heading {
     font-family: 'Syncopate', sans-serif;
     color: var(--gold);
-    font-size: 1.8rem;
-    margin-bottom: 40px;
-    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    display: block; /* New line */
 }
 
-.gold-text { color: white; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-
-/* 4. BIO & POINTS */
-.bio-text p {
-    font-size: 1.05rem;
+/* PARAGRAPHS & LISTS */
+.paragraph-text p {
+    font-size: 1rem;
     line-height: 1.8;
-    color: #ccc;
-    margin-bottom: 20px;
+    color: #bbb;
+    margin-bottom: 15px;
 }
 
-.achievement-points ul {
+.list-container ul {
     list-style: none;
     display: inline-block;
     text-align: left;
 }
 
-.achievement-points li {
-    font-size: 1.1rem;
-    padding: 10px 0;
+.list-container li {
+    padding: 8px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.achievement-points li::before {
+.list-container li::before {
     content: "◈ ";
     color: var(--gold);
 }
 
-/* 5. COLOR GALLERY - NO BLACK AND WHITE */
-.photo-grid {
+/* GALLERY: Controlled photo size & original colors */
+.gallery-layout {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 
-.gallery-img {
+.photo {
     width: 100%;
-    height: 300px;
+    height: 250px; /* Controlled height so they aren't too big */
     object-fit: cover;
-    border-radius: 5px;
-    filter: none !important; /* Forces original colors */
+    border-radius: 8px;
+    filter: none; /* Original colors only */
+    border: 1px solid #222;
 }
 
-/* 6. CONTACT FORM */
-.message-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: auto;
+/* HERO PHOTO */
+.profile-frame img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    margin-bottom: 20px;
 }
 
-.message-form input, .message-form textarea {
-    background: #111;
-    border: 1px solid #333;
-    color: white;
-    padding: 15px;
-}
+.name-header { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; line-height: 1.1; }
+.name-header span { color: var(--gold); }
 
-.message-form button {
-    background: var(--gold);
-    color: black;
-    padding: 15px;
-    font-weight: 900;
-    border: none;
-    cursor: pointer;
-}
+/* FORMS */
+.form-wrapper form { display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: auto; }
+.form-wrapper input, .form-wrapper textarea { padding: 12px; background: #111; border: 1px solid #333; color: white; }
+.form-wrapper button { padding: 15px; background: var(--gold); border: none; font-weight: 900; cursor: pointer; }
 
-@media (max-width: 800px) {
-    .container { width: 90%; }
-    .photo-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 600px) {
+    .main-container { width: 95%; }
+    .oscar-nav { top: 10px; right: 10px; }
+    }

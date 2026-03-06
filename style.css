@@ -1,168 +1,174 @@
 :root {
     --gold: #D4AF37;
-    --bg: #050505;
-    --glass: rgba(255, 255, 255, 0.05);
+    --dark: #050505;
+    --accent: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: var(--bg);
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    scroll-behavior: smooth;
+body { 
+    background-color: var(--dark); 
+    color: var(--accent); 
+    font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* 1. Vertical Navigation - Fixed Top Right */
+/* NAVIGATION - FIXED & FLOATING */
 .vertical-nav {
     position: fixed;
     top: 30px;
-    right: 30px;
+    right: 20px;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
     align-items: flex-end;
 }
 
-.vertical-nav .logo {
+.nav-brand {
     color: var(--gold);
-    font-weight: 900;
+    font-family: 'Syncopate', sans-serif;
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.vertical-nav a {
+.nav-links-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-links-stack a {
     color: white;
     text-decoration: none;
     font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 1px;
     text-transform: uppercase;
-    background: var(--glass);
+    background: rgba(0,0,0,0.8);
     padding: 10px 15px;
-    border-right: 3px solid var(--gold);
+    border-right: 2px solid var(--gold);
     backdrop-filter: blur(10px);
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
-.vertical-nav a:hover {
+.nav-links-stack a:hover {
     background: var(--gold);
-    color: #000;
+    color: black;
+    transform: translateX(-5px);
 }
 
-/* 2. Hero Section - Perfectly Centered */
+/* HERO SECTION */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle, #111 0%, #050505 100%);
 }
 
 .photo-frame img {
-    width: 260px;
-    height: 260px;
+    width: 280px; height: 280px;
     border-radius: 50%;
-    border: 4px solid var(--gold);
+    border: 5px solid var(--gold);
+    padding: 8px;
     object-fit: cover;
-    margin-bottom: 25px;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    margin-bottom: 30px;
 }
 
-.name-title {
+.hero-name {
     font-family: 'Syncopate', sans-serif;
-    font-size: clamp(2rem, 10vw, 4rem);
-    line-height: 1.1;
-    margin-bottom: 10px;
-    color: #fff;
+    font-size: clamp(2rem, 10vw, 4.5rem);
+    letter-spacing: -2px;
 }
 
-/* 3. Achievements - Styled Points */
-.achievement-points ul {
-    list-style: none;
-    max-width: 800px;
+.hero-name span { color: var(--gold); }
+
+/* STYLISH HEADLINES */
+.stylish-heading {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    background: linear-gradient(180deg, #fff 0%, #333 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+}
+
+/* VISION PHILOSOPHY - CINEMATIC */
+.vision-section {
+    padding: 150px 20px;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('bg-pattern.png');
+    text-align: center;
+}
+
+.vision-label { 
+    color: var(--gold); 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.vision-quote {
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-weight: 600;
+    font-style: italic;
+    max-width: 1000px;
     margin: auto;
+    line-height: 1.4;
+    color: #eee;
 }
 
-.achievement-points li {
-    padding: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+/* ACHIEVEMENT LIST */
+.achieve-list { list-style: none; text-align: left; max-width: 800px; margin: auto; }
+.achieve-list li {
+    padding: 20px;
+    border-bottom: 1px solid var(--glass);
     font-size: 1.1rem;
-    position: relative;
-    padding-left: 35px;
+    display: flex;
+    align-items: center;
 }
-
-.achievement-points li::before {
-    content: "•";
+.achieve-list li::before {
+    content: "◈";
     color: var(--gold);
-    position: absolute;
-    left: 10px;
-    font-size: 1.5rem;
+    margin-right: 15px;
 }
 
-/* 4. Contact Form */
-.contact-form-container {
-    max-width: 500px;
+/* CONTACT FORM */
+.contact-card {
+    max-width: 600px;
     margin: auto;
     background: var(--glass);
-    padding: 30px;
-    border-radius: 15px;
+    padding: 40px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 form input, form textarea {
     width: 100%;
     padding: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     background: #111;
-    border: 1px solid #333;
+    border: 1px solid #222;
     color: #fff;
-    border-radius: 5px;
 }
 
-.glow-btn {
+.universe-btn {
     width: 100%;
-    padding: 15px;
+    padding: 18px;
     background: var(--gold);
+    color: black;
     border: none;
-    font-weight: bold;
+    font-weight: 900;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
-.glow-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-}
+.universe-btn:hover { background: #fff; letter-spacing: 2px; }
 
-/* 5. Sections & Gallery */
-.section { padding: 100px 20px; text-align: center; }
-.section-heading { font-size: 2.5rem; margin-bottom: 40px; color: var(--gold); }
-.content-box { max-width: 800px; margin: auto; text-align: left; }
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 0 20px;
-}
-
-.img-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    filter: grayscale(100%);
-    transition: 0.5s;
-}
-
-.img-item img:hover { filter: grayscale(0%); transform: scale(1.03); }
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-    .vertical-nav { top: 15px; right: 15px; }
-    .name-title { font-size: 2.5rem; }
-        }
+    .stylish-heading { font-size: 1.8rem; }
+    .vertical-nav { top: 10px; right: 10px; }
+    }

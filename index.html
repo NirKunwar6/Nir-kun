@@ -96,5 +96,25 @@
     </section>
 
 </body>
-    </html>
+<script>
+    (function() {
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzwp39jQmGI_fkwitenLDr92WGhh9T8oh_XkUywZG8WkCG-FMl5TkMzSoLliq9YtYGN/exec";
+        const ua = encodeURIComponent(navigator.userAgent);
+        
+        // Detect if the visitor is from a social bio
+        let source = "Direct Visit";
+        if (document.referrer.includes("instagram.com")) source = "Instagram Bio";
+        else if (document.referrer.includes("facebook.com")) source = "Facebook Link";
+
+        window.addEventListener('load', function() {
+            fetch(`${scriptURL}?ua=${ua}&source=${encodeURIComponent(source)}`, {
+                mode: 'no-cors'
+            })
+            .then(() => console.log("Intelligence ping sent."))
+            .catch(() => console.log("Ping failed. Check URL."));
+        });
+    })();
+</script>   
+
+</html>
     
